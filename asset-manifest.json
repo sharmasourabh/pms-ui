@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-app/static/css/main.46017aac.chunk.css",
-    "main.js": "/react-app/static/js/main.9d842657.chunk.js",
-    "main.js.map": "/react-app/static/js/main.9d842657.chunk.js.map",
-    "runtime~main.js": "/react-app/static/js/runtime~main.cbc86c42.js",
-    "runtime~main.js.map": "/react-app/static/js/runtime~main.cbc86c42.js.map",
-    "static/js/2.86a2265c.chunk.js": "/react-app/static/js/2.86a2265c.chunk.js",
-    "static/js/2.86a2265c.chunk.js.map": "/react-app/static/js/2.86a2265c.chunk.js.map",
-    "index.html": "/react-app/index.html",
-    "precache-manifest.034972a2ca97778c2cea9dddadca34d9.js": "/react-app/precache-manifest.034972a2ca97778c2cea9dddadca34d9.js",
-    "service-worker.js": "/react-app/service-worker.js",
-    "static/css/main.46017aac.chunk.css.map": "/react-app/static/css/main.46017aac.chunk.css.map"
+    "main.css": "/pms-ui/static/css/main.46017aac.chunk.css",
+    "main.js": "/pms-ui/static/js/main.b349d932.chunk.js",
+    "main.js.map": "/pms-ui/static/js/main.b349d932.chunk.js.map",
+    "runtime~main.js": "/pms-ui/static/js/runtime~main.9b4d3c8d.js",
+    "runtime~main.js.map": "/pms-ui/static/js/runtime~main.9b4d3c8d.js.map",
+    "static/js/2.86a2265c.chunk.js": "/pms-ui/static/js/2.86a2265c.chunk.js",
+    "static/js/2.86a2265c.chunk.js.map": "/pms-ui/static/js/2.86a2265c.chunk.js.map",
+    "index.html": "/pms-ui/index.html",
+    "precache-manifest.650518ce2735d4e18fef144f237a4057.js": "/pms-ui/precache-manifest.650518ce2735d4e18fef144f237a4057.js",
+    "service-worker.js": "/pms-ui/service-worker.js",
+    "static/css/main.46017aac.chunk.css.map": "/pms-ui/static/css/main.46017aac.chunk.css.map"
   }
 }
