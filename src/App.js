@@ -6,51 +6,58 @@ import Form from './components/Form';
 
 class App extends Component {
   state = {
-    characters: [
+    employees: [
       {
-        name: 'Charlie',
-        job: 'Janitor',
+        name: 'Abraham',
+        email: 'abraham@xyz.com',
       },
       {
-        name: 'Mac',
-        job: 'Bouncer',
+        name: 'Bahadur',
+        email: 'bahadur@abc.xyz',
       },
       {
-        name: 'Dee',
-        job: 'Aspring actress',
+        name: 'Cinderella',
+        email: 'cinderella@xyz.com',
       },
       {
-        name: 'Dennis',
-        job: 'Bartender',
+        name: 'Danish',
+        email: 'danish@abc.xyz',
       },
     ]
   };
 
-  removeCharacter = index => {
-    const {characters} = this.state;
+  remove = index => {
+    const { employees } = this.state;
     this.setState({
-      characters: characters.filter((characters, i) => {
+      employees: employees.filter((employees, i) => {
         return index !== i;
       })
     })
   }
 
-  addCharacter = character => {
-    this.setState({characters: [...this.state.characters, character] })
+  add = employee => {
+    this.setState({ employees: [...this.state.employees, employee] })
+  }
+
+  update = (index, employee) => {
+    if (employee.name === '' || employee.email === '') return
+    this.setState(prevState => {
+      const newEmployees = [...prevState.employees];
+      newEmployees[index] = employee
+      return {employees: newEmployees}
+    });
   }
 
   render() {
-    const {characters} = this.state;
-    const name = "Sourabh";
+    const { employees } = this.state;
     return (
-      <div className="App">
-        <div className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1>Hello {name}!</h1>
-        </div>
-        <div className="container">
-          <Table characterData={characters} removeCharacter = {this.removeCharacter}/>
-          <Form addCharacter = {this.addCharacter}/>
+      <div className="small-container">
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <h1 className="text-center">Employees</h1>
+        <div>
+          <Form addEmployee={this.add} />
+          <br/><br/>
+          <Table employeeData={employees} removeEmployee={this.remove} updateEmployee={this.update}/>
         </div>
       </div>
     );

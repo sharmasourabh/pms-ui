@@ -5,7 +5,7 @@ class Form extends Component {
     super(props);
     this.initialState = {
       name: '',
-      job: ''
+      email: ''
     }
     this.state = this.initialState;
   }
@@ -18,18 +18,18 @@ class Form extends Component {
   }
 
   submitForm = () => {
-    this.props.addCharacter(this.state);
+    this.props.addEmployee(this.state);
     this.setState(this.initialState);
   }
 
   render() {
-    const { name, job } = this.state;
+    const { name, email } = this.state;
     return (
-      <form>
-        <label>Name</label>
+      <form className="small-container">
+        <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" value={name} onChange={this.handleChange} />
-        <label>Job</label>
-        <input type="text" id="job" name="job" value={job} onChange={this.handleChange} />
+        <label htmlFor="email">Email</label>
+        <input type="text" id="email" name="email" value={email} onChange={this.handleChange} />
         <input type="button" value="Submit" onClick={this.submitForm} />
       </form>
     );
