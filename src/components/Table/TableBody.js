@@ -56,15 +56,15 @@ class TableBody extends Component {
               defaultValue={row.name} onChange={(event) => this.updateLocalEmployee('name', event, index)} /></td>
             <td id={'tdEmail' + index}><input type="email" id={'email' + index} name={'email' + index}
               defaultValue={row.email} onChange={(event) => this.updateLocalEmployee('email', event, index)}  /></td>
-            <td><button onClick={() => this.updateEmployee(index)}>Save</button></td>
-            <td><button onClick={() => this.setEditIndex(-1)}>Cancel</button></td>
+            <td id={'tdSave' + index}><button id={'btnSave' + index} onClick={() => this.updateEmployee(index)}>Save</button></td>
+            <td id={'tdCancel' + index}><button id={'btnCancel' + index} onClick={() => this.setEditIndex(-1)}>Cancel</button></td>
             </>
           ) : (
             <>
               <td id={'tdName' + index}>{row.name}</td>
               <td id={'tdEmail' + index}>{row.email}</td>
-              <td><button onClick={() => this.props.removeEmployee(index)}>Delete</button></td>
-              <td><button onClick={() => this.setEditIndex(index)}>Edit</button></td>
+              <td id={'tdDelete' + index}><button id={'btnDelete' + index} onClick={() => this.props.removeEmployee(index)}>Delete</button></td>
+              <td id={'tdEdit' + index}><button id={'btnEdit' + index} onClick={() => this.setEditIndex(index)}>Edit</button></td>
             </>
             )
           }
