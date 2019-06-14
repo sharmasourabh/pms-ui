@@ -13,14 +13,16 @@ class TableBody extends Component {
   }
 
   setEditIndex(index) {
+    // performs a shallow merge
     this.setState({ editIndex: index });
     if (index === -1) {
       this.resetLocalEmployee();
     }
   }
 
-  updateLocalEmployee(field, event) {
+  updateLocalEmployee(field, event, index) {
     if (!field || field === '' || !event.target.value || event.target.value === '') return;
+    this.employee = Object.assign({}, this.props.employeeData[index]);
     switch(field) {
       case 'name':
         this.employee.name = event.target.value;
@@ -49,28 +51,21 @@ class TableBody extends Component {
       return (
         <tr key={index}>
           {this.state.editIndex === index ? (
+            <>
             <td id={'tdName' + index}><input type="text" id={'name' + index} name={'name' + index}
-            defaultValue={row.name} onChange={(event) => this.updateLocalEmployee('name', event)} /></td>
-          ) : (
-              <td id={'tdName' + index}>{row.name}</td>
-            )
-          }
-          {this.state.editIndex === index ? (
-            <td id={'tdEmail' + index}><input type="text" id={'email' + index} name={'email' + index} defaultValue={row.email} onChange={(event) => this.updateLocalEmployee('email', event)}  /></td>
-          ) : (
-              <td id={'tdEmail' + index}>{row.email}</td>
-            )
-          }
-          {this.state.editIndex === index ? (
+              defaultValue={row.name} onChange={(event) => this.updateLocalEmployee('name', event, index)} /></td>
+            <td id={'tdEmail' + index}><input type="email" id={'email' + index} name={'email' + index}
+              defaultValue={row.email} onChange={(event) => this.updateLocalEmployee('email', event, index)}  /></td>
             <td><button onClick={() => this.updateEmployee(index)}>Save</button></td>
-          ) : (
-              <td><button onClick={() => this.props.removeEmployee(index)}>Delete</button></td>
-            )
-          }
-          {this.state.editIndex === index ? (
             <td><button onClick={() => this.setEditIndex(-1)}>Cancel</button></td>
+            </>
           ) : (
+            <>
+              <td id={'tdName' + index}>{row.name}</td>
+              <td id={'tdEmail' + index}>{row.email}</td>
+              <td><button onClick={() => this.props.removeEmployee(index)}>Delete</button></td>
               <td><button onClick={() => this.setEditIndex(index)}>Edit</button></td>
+            </>
             )
           }
         </tr>
