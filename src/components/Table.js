@@ -7,7 +7,7 @@ class Table extends Component {
     const { employeeData, removeEmployee, updateEmployee } = this.props
     return (
       <div className="contain-table">
-        <table>
+        <table className="ProseMirror normal">
           <TableHeader />
           <TableBody employeeData={employeeData}
             removeEmployee={removeEmployee}

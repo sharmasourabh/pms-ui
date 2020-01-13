@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -11,11 +15,12 @@ class Form extends Component {
   }
 
   handleChange = (e) => {
-    e.target.classList.add('active');
+    e.target.parentElement.classList.remove('form-field-error');
     const { name, value } = e.target;
     this.setState({
       [name]: value
     })
+
     this.showInputError(e.target.name);
   }
 
@@ -26,7 +31,8 @@ class Form extends Component {
       this.setState(this.initialState);
       const inputs = document.querySelectorAll('input');
       inputs.forEach(input => {
-        input.classList.remove('active');
+        input.parentElement.classList.remove('form-field-error');
+        document.getElementById(`${input.name}Label`).classList.remove('form-field-label-shift');
       });
     }
   }
@@ -34,48 +40,50 @@ class Form extends Component {
   isFormValid() {
     const inputs = document.querySelectorAll('input');
     let isFormValid = true;
-
     inputs.forEach(input => {
-      input.classList.add('active');
-
       const isInputValid = this.showInputError(input.name);
-
       if (!isInputValid) {
         isFormValid = false;
       }
     });
-
     return isFormValid;
   }
 
   showInputError(refName) {
     const validity = this.refs[refName].validity;
-    const label = document.getElementById(`${refName}Label`).textContent;
-    const error = document.getElementById(`${refName}Error`);
+    const label = document.getElementById(`${refName}Label`);
+    label.classList.add('form-field-label-shift');
+    const labelValue = capitalize(refName);
 
     if (!validity.valid) {
+      label.parentElement.classList.add('form-field-error');
       if (validity.valueMissing) {
-        error.textContent = `${label} is a required field`;
+        label.classList.remove('form-field-label-shift');
+        label.textContent = `${labelValue} required`;
       } else if (validity.typeMismatch) {
-        error.textContent = `${label} should be a valid email address`;
+        label.textContent = `${labelValue} should be valid`;
       }
       return false;
     }
 
-    error.textContent = '';
+    label.textContent = labelValue;
     return true;
   }
 
   render() {
     return (
-      <form className="small-container" noValidate>
-        <label htmlFor="name" id="nameLabel" >Name
-        <input type="text" id="name" name="name" ref="name" value={this.state.name} onChange={this.handleChange} required /></label>
-        <label className="error" id="nameError" />
-        <label htmlFor="email" id="emailLabel" >Email
-        <input type="email" id="email" name="email" ref="email" value={this.state.email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={this.handleChange} required /></label>
-        <label className="error" id="emailError" />
-        <button onClick={this.handleSubmit}>Submit</button>
+      <form noValidate>
+        <div className="form-field">
+          <label htmlFor="name" id="nameLabel" className="form-field-label">Name</label>
+          <input type="text" id="name" name="name" ref="name" className="form-field-input" spellCheck="false" value={this.state.name} onChange={this.handleChange} required />
+          <div className="_3ND7O5VNyy88KOUTSjso-S"></div>
+        </div>
+        <div className="form-field">
+          <label htmlFor="email" id="emailLabel" className="form-field-label">Email</label>
+          <input type="email" id="email" name="email" ref="email" className="form-field-input" spellCheck="false" value={this.state.email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={this.handleChange} required />
+          <div className="_3ND7O5VNyy88KOUTSjso-S"></div>
+        </div>
+        <div className="btn form-field-button form-field-button-color form-field-button-display form-field-button-transform" onClick={this.handleSubmit}><span>Add Employee</span></div>
       </form>
     );
   }
