@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9c155655ae21d49fe65c32e57fcd81ce",
+    "revision": "f0ed0c6213f4afd8d4b62c9721f0ed78",
     "url": "/pms-ui/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pms-ui/static/js/2.37ff381f.chunk.js"
   },
   {
-    "revision": "85b12af60ddf57ea6860c3b16407fd52",
-    "url": "/pms-ui/static/js/2.37ff381f.chunk.js.LICENSE"
+    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
+    "url": "/pms-ui/static/js/2.37ff381f.chunk.js.LICENSE.txt"
   },
   {
     "revision": "899f6813bc406df2048d",
